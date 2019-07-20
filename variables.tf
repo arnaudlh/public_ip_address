@@ -10,7 +10,7 @@ variable "tags" {
   
 }
 
-variable "ip_address_name_rg" {
+variable "ip_address_rg" {
   
 }
 
