@@ -11,7 +11,7 @@ log {
 
         category =  "DDoSProtectionNotifications"
         retention_policy {
-            days   = 90
+            days   = var.opslogs_retention_period
             enabled = true
         }
         }
@@ -19,7 +19,7 @@ log {
 
         category =  "DDoSMitigationFlowLogs"
         retention_policy {
-            days   = 90
+            days   = var.opslogs_retention_period
             enabled = true
         }
         }
@@ -27,7 +27,7 @@ log {
 
         category =  "DDoSMitigationReports"
         retention_policy {
-            days   = 90
+            days   = var.opslogs_retention_period
             enabled = true
         }
         }
@@ -35,7 +35,7 @@ metric {
         category = "AllMetrics"
 
         retention_policy {
-            days    = 90
+            days    = var.opslogs_retention_period
             enabled = true
                 }
     }

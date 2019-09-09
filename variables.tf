@@ -49,3 +49,8 @@ variable "timeout" {
 variable "zones" {
   description = "(Required) Azure Availability Zone where the public IP address will be deployed"  
 }
+
+variable "opslogs_retention_period" {
+  description = "(Optional) Number of days to keep operations logs inside storage account"
+  default = 60
+}
