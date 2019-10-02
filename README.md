@@ -1,3 +1,4 @@
+[![Build status](https://dev.azure.com/azure-terraform/Blueprints/_apis/build/status/modules/public_ip_address)](https://dev.azure.com/azure-terraform/Blueprints/_build/latest?definitionId=0)
 # Deploys a public IP address
 Creates an Azure public IP address (IPv4 or IPv6)
 
