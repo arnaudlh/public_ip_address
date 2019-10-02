@@ -1,42 +1,9 @@
-#Creates the diagnostics settings for the public ip
-resource "azurerm_monitor_diagnostic_setting" "public_ip_diags" {
-
-name                             = "${azurerm_public_ip.public_ip.name}-diag"
-target_resource_id               = "${azurerm_public_ip.public_ip.id}"
-eventhub_name                    = "${var.diagnostics_map.eh_name}"
-eventhub_authorization_rule_id   = "${var.diagnostics_map.eh_id}/authorizationrules/RootManageSharedAccessKey"
-log_analytics_workspace_id       = "${var.log_analytics_workspace.id}"
-storage_account_id               = "${var.diagnostics_map.diags_sa}"
-log {
-
-        category =  "DDoSProtectionNotifications"
-        retention_policy {
-            days   = var.opslogs_retention_period
-            enabled = true
-        }
-        }
-log {
-
-        category =  "DDoSMitigationFlowLogs"
-        retention_policy {
-            days   = var.opslogs_retention_period
-            enabled = true
-        }
-        }
-log {
-
-        category =  "DDoSMitigationReports"
-        retention_policy {
-            days   = var.opslogs_retention_period
-            enabled = true
-        }
-        }
-metric {
-        category = "AllMetrics"
-
-        retention_policy {
-            days    = var.opslogs_retention_period
-            enabled = true
-                }
-    }
-}  
+module "diagnostics_pip" {
+  source = "git://github.com/aztfmod/diagnostics.git?ref=v0.1.1"
+  
+    name                            = azurerm_public_ip.public_ip.name
+    resource_id                     = azurerm_public_ip.public_ip.id
+    log_analytics_workspace_id      = var.log_analytics_workspace_id
+    diagnostics_map                 = var.diagnostics_map
+    diag_object                     = var.diagnostics_settings
+}
