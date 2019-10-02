@@ -3,7 +3,7 @@ resource "azurerm_public_ip" "public_ip" {
   location                  = var.ip_addr.location
   resource_group_name       = var.ip_addr.rg
   allocation_method         = var.ip_addr.allocation_method
-  tags                      = var.tags
+  tags                      = local.tags
 
   sku                       = "${contains(keys(var.ip_addr), "sku") ? var.ip_addr.sku : null}"
   ip_version                = "${contains(keys(var.ip_addr), "ip_version") ? var.ip_addr.ip_version : null}"  
