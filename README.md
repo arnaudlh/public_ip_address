@@ -6,7 +6,7 @@ Creates an Azure public IP address (IPv4 or IPv6)
 Reference the module to a specific version (recommended):
 ```hcl
 module "public_ip_address" {
-    source                  = "git://github.com/aztfmod/public_ip_address.git?ref=v0.1"
+    source                  = "git://github.com/aztfmod/public_ip_address.git?ref=v0.x"
   
     ip_addr                           = var.ipconfig
     diagnostics_settings              = var.ipdiags
@@ -28,12 +28,51 @@ module "public_ip_address" {
 ```
 
 # Parameters
+
+## name 
+(Required) Name of the public IP to be created.
+
+```hcl 
+variable "name" {
+  description = "(Required) Name of the public IP to be created"  
+}
+```
+
+Sample:
+```hcl 
+name = "mypip"
+```
+
+## location
+(Required) Location of the public IP to be created.
+```hcl 
+variable "location" {
+  description = "(Required) Location of the public IP to be created"   
+}
+```
+
+Sample:
+```hcl 
+location = "southeastasia"
+```
+
+
+## rg 
+Resourge group of the public IP to be created. 
+
+```hcl 
+variable "rg" {
+  description = "(Required) Resourge group of the public IP to be created"    
+}
+```
+Sample:
+```hcl 
+rg = "myrg"
+```
+
 ## ip_addr
 (Required) The configuration object describing the public IP configuration
 Mandatory properties are:
-- name
-- location
-- rg
 - allocation_method
 
 Optional properties are:
@@ -52,9 +91,6 @@ variable "ip_addr" {
 Example
 ```hcl
   ip_addr = {
-        name                = "pip_test"
-        location            = "southeastasia"
-        rg                  = "uqvh-hub-egress-net"
         allocation_method   = "Static"
         #Dynamic Public IP Addresses aren't allocated until they're assigned to a resource (such as a Virtual Machine or a Load Balancer) by design within Azure 
         

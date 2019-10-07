@@ -1,3 +1,14 @@
+variable "name" {
+  description = "(Required) Name of the public IP to be created"  
+}
+
+variable "location" {
+  description = "(Required) Location of the public IP to be created"   
+}
+
+variable "rg" {
+  description = "(Required) Resourge group of the public IP to be created"    
+}
 
 variable "tags" {
   description = "(Required) Tags to be applied to the IP address to be created"
