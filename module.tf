@@ -1,7 +1,7 @@
 resource "azurerm_public_ip" "public_ip" {
-  name                      = var.ip_addr.name
-  location                  = var.ip_addr.location
-  resource_group_name       = var.ip_addr.rg
+  name                      = var.name
+  location                  = var.location
+  resource_group_name       = var.rg
   allocation_method         = var.ip_addr.allocation_method
   tags                      = local.tags
 
